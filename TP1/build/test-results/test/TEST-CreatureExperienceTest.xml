@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CreatureExperienceTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2023-09-09T17:39:34" hostname="SBEE" time="0.078">
+  <properties/>
+  <testcase name="testSetExperience()" classname="CreatureExperienceTest" time="0.023"/>
+  <testcase name="testSetExperienceSup()" classname="CreatureExperienceTest" time="0.0"/>
+  <testcase name="testConstructeurAvecParametres()" classname="CreatureExperienceTest" time="0.004"/>
+  <testcase name="testConstructeurCopie()" classname="CreatureExperienceTest" time="0.002"/>
+  <testcase name="testSetExperienceNegative()" classname="CreatureExperienceTest" time="0.001"/>
+  <testcase name="testSetExperienceDecrement()" classname="CreatureExperienceTest" time="0.001"/>
+  <testcase name="testDefendreAvecExpBonus()" classname="CreatureExperienceTest" time="0.001"/>
+  <testcase name="testObtenirExperience()" classname="CreatureExperienceTest" time="0.002"/>
+  <testcase name="testAttaquerAvecExpBonus()" classname="CreatureExperienceTest" time="0.002"/>
+  <testcase name="testConstructeurParDefaut()" classname="CreatureExperienceTest" time="0.001"/>
+  <testcase name="testAttaquer()" classname="CreatureExperienceTest" time="0.001"/>
+  <testcase name="testAfficher()" classname="CreatureExperienceTest" time="0.016"/>
+  <testcase name="testDefendre()" classname="CreatureExperienceTest" time="0.001"/>
+  <testcase name="testConstructeurAvecCreatureEtExperience()" classname="CreatureExperienceTest" time="0.001"/>
+  <testcase name="testSetExperienceIncrement()" classname="CreatureExperienceTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

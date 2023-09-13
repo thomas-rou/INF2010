@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CreatureMagiqueTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2023-09-09T17:39:34" hostname="SBEE" time="0.026">
+  <properties/>
+  <testcase name="testUtiliserPotionMagique()" classname="CreatureMagiqueTest" time="0.004"/>
+  <testcase name="testConstructeurCopie()" classname="CreatureMagiqueTest" time="0.001"/>
+  <testcase name="testAttaque()" classname="CreatureMagiqueTest" time="0.0"/>
+  <testcase name="testConstructeurPersonnalise()" classname="CreatureMagiqueTest" time="0.001"/>
+  <testcase name="testSetPotionMagique()" classname="CreatureMagiqueTest" time="0.001"/>
+  <testcase name="testSetPotionMagiqueDecrement()" classname="CreatureMagiqueTest" time="0.001"/>
+  <testcase name="testerSetPotionMagiqueIncrement()" classname="CreatureMagiqueTest" time="0.001"/>
+  <testcase name="testConstructeurParDefaut()" classname="CreatureMagiqueTest" time="0.001"/>
+  <testcase name="testDefendreMagique()" classname="CreatureMagiqueTest" time="0.0"/>
+  <testcase name="testAfficher()" classname="CreatureMagiqueTest" time="0.001"/>
+  <testcase name="testDefendre()" classname="CreatureMagiqueTest" time="0.001"/>
+  <testcase name="testerToString()" classname="CreatureMagiqueTest" time="0.001"/>
+  <testcase name="testAttaqueMagique()" classname="CreatureMagiqueTest" time="0.002"/>
+  <testcase name="testConstructeurAvecCreature()" classname="CreatureMagiqueTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

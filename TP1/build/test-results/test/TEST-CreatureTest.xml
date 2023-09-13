@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CreatureTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2023-09-09T17:39:35" hostname="SBEE" time="0.033">
+  <properties/>
+  <testcase name="testAttaquerWithBonus()" classname="CreatureTest" time="0.0"/>
+  <testcase name="testConstructeurCopie()" classname="CreatureTest" time="0.001"/>
+  <testcase name="testToString()" classname="CreatureTest" time="0.001"/>
+  <testcase name="estAffaibli()" classname="CreatureTest" time="0.001"/>
+  <testcase name="testConstructeurAvecDeuxParametres()" classname="CreatureTest" time="0.001"/>
+  <testcase name="testConstructeurParDefaut()" classname="CreatureTest" time="0.001"/>
+  <testcase name="testConstructeurComplet()" classname="CreatureTest" time="0.001"/>
+  <testcase name="testIncrementerVie()" classname="CreatureTest" time="0.002"/>
+  <testcase name="testAttaquer()" classname="CreatureTest" time="0.001"/>
+  <testcase name="testMethodesModification()" classname="CreatureTest" time="0.001"/>
+  <testcase name="testDefendre()" classname="CreatureTest" time="0.001"/>
+  <testcase name="testDecrementerVie()" classname="CreatureTest" time="0.001"/>
+  <testcase name="testPointDeVieInf()" classname="CreatureTest" time="0.002"/>
+  <testcase name="testPointDeVieSup()" classname="CreatureTest" time="0.0"/>
+  <testcase name="testEgalite()" classname="CreatureTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
