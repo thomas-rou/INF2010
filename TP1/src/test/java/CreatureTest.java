@@ -119,7 +119,7 @@ public class CreatureTest {
 
     @Test
     public void testEgalite() {
-        Creature creatureIdentique = new Creature("Rattata", 50, 25);
+        Creature creatureIdentique = new Creature("Rattata", 30, 20, 80);
         assertTrue(creature_1.equals(creatureIdentique));
         assertFalse(creature_1.equals(creature_2));
     }
