@@ -1,3 +1,5 @@
+import java.io.PrintStream;
+
 public class CreatureMagique extends Creature{
     public static final int PERTE_MAGIQUE = 5;
     private int forceMagique; // Force magique de la créature qui booste ses attaques
@@ -59,10 +61,7 @@ public class CreatureMagique extends Creature{
      */
     public void attaquer(Creature creature){
         if(this.getEstMagique()){
-            int dommageMagique = this.getForceMagique() - creature.getDefense();
-            if(dommageMagique > 0) {
-                creature.setPointDeVie(dommageMagique, false);
-            }
+            this.attaquer(creature, this.getForceMagique());
         }
         else {
             super.attaquer(creature);
@@ -74,8 +73,8 @@ public class CreatureMagique extends Creature{
      * 3. Réduisez la force magique de la créature par PERTE_MAGIQUE
      */
     public void attaquer(Creature creature, int forceMagique){
-        int magieBonus = this.getAttaque() * (forceMagique / 100);
-        int dommageMagique = this.getForceMagique() + magieBonus - creature.getDefense();
+        int magieBonus = (int) (this.getAttaque() * (forceMagique / 100.0));
+        int dommageMagique = this.getAttaque() + magieBonus - creature.getDefense();
         if(dommageMagique > 0) {
             creature.setPointDeVie(dommageMagique, false);
         }
@@ -108,9 +107,11 @@ public class CreatureMagique extends Creature{
         }
     }
 
-    public void afficher(){}
+    public void afficher(){
+        System.out.print(this.toString());
+    }
 
     public String toString(){
-        return "[Creature Experience] -> Nom: " + this.getNom() + ", Attaque: " + this.getAttaque() + ", Défense: " + this.getDefense() + ", Points de Vie: " + this.getPointDeVie() + ", Force Magique: " + this.getForceMagique();
+        return "[Creature Magique] -> Nom: " + this.getNom() + ", Attaque: " + this.getAttaque() + ", Défense: " + this.getDefense() + ", Points de Vie: " + this.getPointDeVie() + ", Force Magique: " + this.getForceMagique();
     }
 }
