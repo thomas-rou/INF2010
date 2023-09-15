@@ -1,7 +1,7 @@
 import java.util.Objects;
 
 public class Creature {
-    public static final int MAX_VIE = 100;
+    public static final int MAX_VAL = 100;
     private String nom;
     private int attaque;
     private int defense;
@@ -9,13 +9,13 @@ public class Creature {
 
     // constructeur par défaut
     public Creature(){
-        this.setNom("");
-        this.setAttaque(0);
-        this.setDefense(0);
-        this.setPointDeVie(MAX_VIE);
+        this("",0,0,MAX_VAL);
     }
 
     // Constructeur avec params spécifiques
+    public Creature(String nom, int attaque, int defense){
+        this(nom,attaque,defense,MAX_VAL);
+    }
     public Creature(String nom, int attaque, int defense, int pointDeVie){
         this.setNom(nom);
         this.setAttaque(attaque);
@@ -24,8 +24,8 @@ public class Creature {
     }
 
     // Constructeur de copie
-    public Creature copy(){
-        return new Creature(this.getNom(), this.getAttaque(), this.getDefense(), this.getPointDeVie());
+    public Creature (Creature creature){
+        this(creature.getNom(), creature.getAttaque(), creature.getDefense(), creature.getPointDeVie());
     }
 
     // getters and setters
@@ -52,7 +52,13 @@ public class Creature {
         this.defense = defense;
     }
     public void setPointDeVie(int pointDeVie){
-        this.pointDeVie = pointDeVie;
+        if(pointDeVie > MAX_VAL) {
+            this.pointDeVie = MAX_VAL;
+        } else if (pointDeVie < 0) {
+            this.pointDeVie = 0;
+        } else {
+            this.pointDeVie = pointDeVie;
+        }
     }
 
     /** Modifie les points de vie
@@ -81,7 +87,10 @@ public class Creature {
 
     // Ajoutez le bonus d'attaque à l'attaque de cette créature
     public void attaquer(Creature creature, int attaqueBonus){
-        creature.setAttaque(creature.attaque + attaqueBonus);
+        int dommage = this.getAttaque() + attaqueBonus - creature.getDefense();
+        if(dommage > 0) {
+            creature.setPointDeVie(dommage, false);
+        }
     }
 
     /** Se défend contre l'attaque d'une autre créature
