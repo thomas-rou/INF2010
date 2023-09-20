@@ -91,6 +91,7 @@ public class CreatureExperience extends Creature implements Experience{
         if(dommage > 0){
             this.setPointDeVie(dommage, false);
         }
+        this.setExperience(expBonus, false);
     }
 
     public void afficher(){}
