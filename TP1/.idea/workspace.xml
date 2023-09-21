@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5bb66122-109b-4e8e-b132-7352d8b4d388" name="Changes" comment="first push">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Creature.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Creature.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Experience.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Experience.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-CreatureExperienceTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-CreatureMagiqueTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-CreatureTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-DresseurTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-DresseurTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-PolylandTest.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Dresseur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dresseur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DresseurTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/DresseurTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/PolylandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PolylandTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,8 +88,8 @@
       <recent name="C:\Users\beddo\OneDrive\Bureau\TP1-A23\src\test\java" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'TP1-A23.test'">
-    <configuration name="CreatureExperienceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.DresseurTest.testToString">
+    <configuration name="DresseurTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -102,7 +102,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;CreatureExperienceTest&quot;" />
+            <option value="&quot;DresseurTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -113,7 +113,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="Tests in 'TP1-A23.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DresseurTest.testConstructeurCopie" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -125,6 +125,8 @@
         <option name="taskNames">
           <list>
             <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;DresseurTest.testConstructeurCopie&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -132,7 +134,79 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="DresseurTest.testGetCreature" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;DresseurTest.testGetCreature&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="DresseurTest.testSetCreatures" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;DresseurTest.testSetCreatures&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="DresseurTest.testToString" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;DresseurTest.testToString&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration default="true" type="JetRunConfigurationType">
@@ -150,8 +224,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Tests in 'TP1-A23.test'" />
-        <item itemvalue="Gradle.CreatureExperienceTest" />
+        <item itemvalue="Gradle.DresseurTest.testToString" />
+        <item itemvalue="Gradle.DresseurTest.testSetCreatures" />
+        <item itemvalue="Gradle.DresseurTest.testConstructeurCopie" />
+        <item itemvalue="Gradle.DresseurTest.testGetCreature" />
+        <item itemvalue="Gradle.DresseurTest" />
       </list>
     </recent_temporary>
   </component>
@@ -170,7 +247,7 @@
       <workItem from="1694840940205" duration="603000" />
       <workItem from="1695003211410" duration="5870000" />
       <workItem from="1695043357103" duration="598000" />
-      <workItem from="1695256909158" duration="13531000" />
+      <workItem from="1695256909158" duration="18859000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1694282857667</created>

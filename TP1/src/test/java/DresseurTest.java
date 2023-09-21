@@ -52,8 +52,8 @@ public class DresseurTest {
     @Test
     public void testGetCreature() {
         dresseur.ajouterCreature(creature1);
-        assertEquals(creature1, dresseur.getCreature("Pikachu"));
-        assertNull(dresseur.getCreature("Charizard"));
+        assertEquals(creature1, dresseur.getCreatureParNom("Pikachu"));
+        assertNull(dresseur.getCreatureParNom("Charizard"));
     }
 
     @Test

@@ -64,14 +64,20 @@ public class Dresseur {
 
     // Retire une créature de la liste par son nom
 
-    public boolean supprimerCreature(Creature creature){
-        Creature found = this.getCreatureParNom(creature.getNom());
-        return this.creatures.remove(found);
+    public boolean supprimerCreature(String nom) {
+        return creatures.removeIf(creature -> creature.getNom().equals(nom));
     }
 
+
+
     // Recherche une créature par son nom et la renvoie
-    public Creature getCreatureParNom(String nom){
-       return this.creatures.stream().filter(x -> Objects.equals(x.getNom(), nom)).findFirst().get();
+    public Creature getCreatureParNom(String nom) {
+        for (Creature creature : creatures) {
+            if (creature.getNom().equals(nom)) {
+                return creature;
+            }
+        }
+        return null;
     }
 
     // Surcharge des opérateurs de comparaison
@@ -86,8 +92,12 @@ public class Dresseur {
     // Surcharge de l'opérateur << pour afficher les informations d'un dresseur
     @Override
     public String toString() {
-        return "Dresseur{" + " nom='" + nom + '\'' + ", creatures = " + creatures + '}';
+        return "Dresseur{" +
+                "nom='" + nom + '\'' +
+                ", creatures=" + creatures +
+                '}';
     }
+
 }
 
 
