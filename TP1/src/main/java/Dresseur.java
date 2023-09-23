@@ -2,50 +2,44 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Dresseur {
-
-    protected ArrayList<Creature> creatures;
-    protected String nom;
+    protected ArrayList<Creature> creatures_;
+    protected String nom_;
 
     // Constructeur avec nom en paramètre
     public Dresseur(String nom) {
         this.setNom(nom);
-        this.creatures = new ArrayList<>();
+        this.creatures_ = new ArrayList<>();
     }
 
     // Constructeur par copie
-    public Dresseur(Dresseur autre) {
-        this(autre.getNom());
-        this.setCreatures(autre.getCreatures());
+    public Dresseur(Dresseur dresseur) {
+        this(dresseur.getNom());
+        for (int i = 0; i < dresseur.getCreatures().size(); i++) {
+            this.creatures_.add(new Creature());
+        }
     }
 
     // Méthodes d'accès et de modification du nom du dresseur
-
     public String getNom(){
-        return this.nom;
+        return this.nom_;
     }
     public void setNom(String nouveauNom) {
-        this.nom = nouveauNom;
+        this.nom_ = nouveauNom;
     }
 
     // Modifie la liste des créatures
-
     public void setCreatures(ArrayList<Creature> creatures){
-        for (int i = 0; i < creatures.size(); i++){
-            this.creatures.set(i, creatures.get(i));
-
-        }
-
+            this.creatures_.addAll(creatures);
     }
 
     // Obtient le nombre de créatures possédées par le dresseur
     public int getNombreCreatures(){
-
-        return this.creatures.size();
+        return this.creatures_.size();
     }
 
     // Obtient une liste des créatures du dresseur
     public ArrayList<Creature> getCreatures(){
-        return this.creatures;
+        return this.creatures_;
     }
 
     // Si la créature est affaiblie, elle est ajoutée à la liste des créatures du dresseur
@@ -53,26 +47,25 @@ public class Dresseur {
         if (creature.estAffaibli()){
             return this.ajouterCreature(creature);
         }
-        else
-            return false;
+        return false;
    }
 
     // Ajoute une créature à la liste
     public boolean ajouterCreature(Creature creature) {
-        return this.creatures.add(creature);
+        if(!creatures_.contains(creature)){
+            return this.creatures_.add(creature);
+        }
+        return false;
     }
 
     // Retire une créature de la liste par son nom
-
     public boolean supprimerCreature(String nom) {
-        return creatures.removeIf(creature -> creature.getNom().equals(nom));
+        return creatures_.removeIf(creature -> creature.getNom().equals(nom));
     }
-
-
 
     // Recherche une créature par son nom et la renvoie
     public Creature getCreatureParNom(String nom) {
-        for (Creature creature : creatures) {
+        for (Creature creature : creatures_) {
             if (creature.getNom().equals(nom)) {
                 return creature;
             }
@@ -81,23 +74,51 @@ public class Dresseur {
     }
 
     // Surcharge des opérateurs de comparaison
-    public boolean equals(Dresseur dresseur) {
-        return this.nom.equals(dresseur.nom);
+    public boolean equals(Object objet) {
+        if(this == objet){
+            return true; //même référence
+        }
+        else if(objet == null || getClass() != objet.getClass()){
+            return false; //Classes différentes ou nulle
+        }
+        Dresseur autreDresseur = (Dresseur) objet;
+
+        // Comparaison des attributs pour l'égalité
+        return Objects.equals(this.nom_, autreDresseur.nom_)
+                && Objects.equals(this.creatures_, autreDresseur.creatures_);
     }
 
     public boolean equals(String nom) {
-        return this.nom.equals(nom);
+        return Objects.equals(this.nom_, nom);
+    }
+
+    public boolean equals(String nom, Object objet){
+        if(objet == null || getClass() != objet.getClass()){
+            return false; //Classes différentes ou nulle
+        }
+        Dresseur autreDresseur = (Dresseur) objet;
+
+        // Comparaison des attributs pour l'égalité
+        return Objects.equals(this.nom_, autreDresseur.nom_)
+                && Objects.equals(this.nom_, nom)
+                && Objects.equals(this.creatures_, autreDresseur.creatures_);
+
+    }
+
+    public int hashCode(){
+        return Objects.hash(nom_);
     }
 
     // Surcharge de l'opérateur << pour afficher les informations d'un dresseur
-    @Override
     public String toString() {
-        return "Dresseur{" +
-                "nom='" + nom + '\'' +
-                ", creatures=" + creatures +
-                '}';
-    }
+        StringBuilder infoDressseur = new StringBuilder();
+        infoDressseur.append('[' + this.getNom() + "]\n");
+        for (Creature creature : this.creatures_) {
+            infoDressseur.append("\t").append(creature).append("\n");
+        }
 
+        return infoDressseur.toString();
+    }
 }
 
 
