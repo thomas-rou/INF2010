@@ -1,9 +1,11 @@
 public class CreatureExperience extends Creature implements Experience{
     private int forceExperience;
-    // Constructeurs
+
+    /** Constructeurs */
     public CreatureExperience(){
         this("",0,0,MAX_VAL,0);
     }
+
     public CreatureExperience(String nom, int attaque, int defense, int pointDeVie, int forceExp){
         this.setNom(nom);
         this.setAttaque(attaque);
@@ -11,6 +13,7 @@ public class CreatureExperience extends Creature implements Experience{
         this.setPointDeVie(pointDeVie);
         this.setExperience(forceExp);
     }
+
     public CreatureExperience(Creature creature, int forceExp){
         this(creature.getNom(),
                 creature.getAttaque(),
@@ -18,6 +21,7 @@ public class CreatureExperience extends Creature implements Experience{
                 creature.getPointDeVie(),
                 forceExp);
     }
+
     public CreatureExperience(CreatureExperience cExp){
         this(cExp.getNom(),
                 cExp.getAttaque(),
@@ -26,7 +30,7 @@ public class CreatureExperience extends Creature implements Experience{
                 cExp.getExperience());
     }
 
-    //Accesseurs et modificateurs
+    /** Accesseurs et modificateurs */
     public int getExperience(){
         return this.forceExperience;
     }
@@ -40,6 +44,7 @@ public class CreatureExperience extends Creature implements Experience{
             this.forceExperience = exp;
         }
     }
+
     public void setExperience(int exp, boolean estPositive){
         if(estPositive){
             this.setExperience(this.getExperience() + exp);
@@ -49,7 +54,7 @@ public class CreatureExperience extends Creature implements Experience{
         }
     }
 
-    /* Attaque une autre créature
+    /** Attaque une autre créature
      * 1. Calculez un bonus : getAttaque() * (forceExperience / 100)
      * 2. Attaquer avec ce bonus
      */
@@ -59,7 +64,8 @@ public class CreatureExperience extends Creature implements Experience{
             creature.setPointDeVie(dommage, false);
         }
     }
-    /*
+
+    /**
      * 1. Calculez un bonus : getAttaque() * ((forceExperience + expBonus) / 100)
      * 2. Attaquer avec ce bonus
      */
@@ -70,7 +76,7 @@ public class CreatureExperience extends Creature implements Experience{
         }
     }
 
-    /* Se défend contre l'attaque d'une autre créature
+    /** Se défend contre l'attaque d'une autre créature
      * 1. getDefense() * (forceExperience / 100)
      * 2. Se deffendre avec ce bonus
      */
@@ -81,7 +87,8 @@ public class CreatureExperience extends Creature implements Experience{
             this.setPointDeVie(dommage, false);
         }
     }
-    /*
+
+    /**
      * 1. getDefense() * ((forceExperience + expBonus) / 100)
      * 2. Se deffendre avec ce bonus
      */
