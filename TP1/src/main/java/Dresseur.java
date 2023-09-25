@@ -20,7 +20,7 @@ public class Dresseur {
     }
 
     /** Méthodes d'accès et de modification du nom du dresseur */
-    public String getNom(){
+    public String getNom() {
         return this.nom_;
     }
 
@@ -30,7 +30,7 @@ public class Dresseur {
 
     /** Modifie la liste des créatures */
     public void setCreatures(ArrayList<Creature> creatures){
-            this.creatures_.addAll(creatures);
+        this.creatures_.addAll(creatures);
     }
 
     /** Obtient le nombre de créatures possédées par le dresseur */
@@ -44,12 +44,12 @@ public class Dresseur {
     }
 
     /** Si la créature est affaiblie, elle est ajoutée à la liste des créatures du dresseur */
-   public boolean attraperCreature(Creature creature){
+    public boolean attraperCreature(Creature creature){
         if (creature.estAffaibli()){
             return this.ajouterCreature(creature);
         }
         return false;
-   }
+    }
 
     /** Ajoute une créature à la liste */
     public boolean ajouterCreature(Creature creature) {
@@ -119,7 +119,6 @@ public class Dresseur {
         return infoDressseur.toString();
     }
 }
-
 
 
 
