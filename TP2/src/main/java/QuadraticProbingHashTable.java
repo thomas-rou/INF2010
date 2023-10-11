@@ -22,7 +22,7 @@ public class QuadraticProbingHashTable<AnyType> {
     /**
      * Construct the hash table.
      */
-
+    //int collisionNbr = 0;
     public QuadraticProbingHashTable() {
         this(DEFAULT_TABLE_SIZE);
     }
@@ -89,6 +89,7 @@ public class QuadraticProbingHashTable<AnyType> {
             offset += 2;
             while (currentPos >= array.length)
                 currentPos -= array.length;
+            //++collisionNbr;
         }
 
 

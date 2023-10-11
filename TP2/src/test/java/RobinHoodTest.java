@@ -120,6 +120,8 @@ public class RobinHoodTest {
 
         System.out.println("Robin Hood HashTable took: " + durationRobin + " nanoseconds");
         System.out.println("Quadratic Probing HashTable took: " + durationQuadratic + " nanoseconds");
+        //System.out.println("Robin Hood number of collision: " + rHTable3.collisionNbr);
+        //System.out.println("Quadratic Probing number of collision: " + qPTable3.collisionNbr);
     }
 
 
