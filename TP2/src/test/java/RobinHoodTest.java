@@ -89,7 +89,7 @@ public class RobinHoodTest {
         rHTable2.insert(1);
         assertEquals(17, rHTable2.array.length);
     }
-    @Disabled
+
     @Test
     public void executionTimeTest() {
         RobinHoodHashTable rHTable3 = new RobinHoodHashTable<Integer>();

@@ -23,8 +23,6 @@ public final class Interview {
      *        D'après les observations ci-dessus, il est évident que, quel que soit le scénario, la complexité
      *        de l'algorithme reste constamment à O(n+m).
      *
-     ** TODO Justify Time Complexity  : Average Case O(n+m)
-     ** TODO Justify Space Complexity : Worst Case O(n+m)
      *
      * @param phrase String containing a sequence of words separated by a space
      * @param stopwords String array containing all the stop words

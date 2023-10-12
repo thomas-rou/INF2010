@@ -20,37 +20,37 @@ public class RobinHoodHashTable<AnyType> extends QuadraticProbingHashTable<AnyTy
         int baseOffset = 1;
         int offset = baseOffset;
 
-        while (true){
-            if (array[currentPos] == null){
+        while (true) {
+            if (array[currentPos] == null) {
                 array[currentPos] = new HashEntry<AnyType>(x.element, true);
                 array[currentPos].probeDistance = currentProbeDistance;
-                if (++currentSize > array.length * 0.5)
+
+                if (++currentSize > array.length * 0.5) {
                     rehash();
+                    return;
+                }
+            } else if (array[currentPos].element == x.element) {
                 return;
-            }
-            else if (array[currentPos].element == x.element){
-                return;
-            }
-            else if (currentProbeDistance > array[currentPos].probeDistance){
+            } else if (currentProbeDistance > array[currentPos].probeDistance) {
                 HashEntry<AnyType> temp = array[currentPos];
                 array[currentPos] = new HashEntry<AnyType>(x.element, true);
                 array[currentPos].probeDistance = currentProbeDistance;
                 //++collisionNbr;
+
                 if (++currentSize > array.length * 0.5) {
                     rehash();
                 }
-                if (temp.isActive){
+
+                if (temp.isActive) {
                     x = temp;
                     offset = baseOffset;
                     currentProbeDistance = x.probeDistance;
                     initialPos = myhash(x.element);
-                }
-                else{
+                } else {
                     --currentSize;
                     return;
                 }
-            }
-            else {
+            } else {
                 currentPos = (initialPos + offset * offset) % array.length;
                 offset += 1;
                 currentProbeDistance += 1;
@@ -95,18 +95,58 @@ public class RobinHoodHashTable<AnyType> extends QuadraticProbingHashTable<AnyTy
 *       Quadratic Probing HashTable took: 132510800 nanoseconds
 *   10. Robin Hood HashTable took: 117249000 nanoseconds
 *       Quadratic Probing HashTable took: 133193400 nanoseconds
+* Moyennes :
+ * Robin Hood HashTable : 161005470 ns
+ * Quadratic Probing HashTable : 155111170 ns
 *
-* Nombre de collision avec le inputArrays.txt (le code utilisé pour cette
-* étape à été mis en commentaire):
-*   Robin Hood number of collision: 856076
-*   Quadratic Probing number of collision: 801022
+* Nombre de collision avec le inputArrays.txt
+* (le code utilisé pour cette étape à été mis en commentaire):
+ *  Robin Hood number of collision: 856076
+ *  Quadratic Probing number of collision: 801022
 *
-* Analyse :
- * Il semble que RobinHoodHashTable à un temps moyen d'exécution plus faible
- * que QuadraticProbingHashTable, cependant sa variabilité est plus grande.
- * RobinHoodHashTable semble parfois prendre significativement plus de temps
- * que QuadraticProbingHashTable. Le nombre de collision semble plus élevé
- * pour RobinHoodHashTable (856076) que pour QuadraticProbingHashTable (801022)
- * cela semble indiqué que RobinHoodHashTable est plus efficace à gérer des situations
- * où il y a un grand nombre de collision.
+* Analyse comparative des performances des tables de hachage Robin Hood et Quadratic Probing :
+ *
+ * Les données recueillies lors de l'exécution des tests de performance indiquent
+ * des différences significatives entre les tables de hachage Robin Hood et Quadratic Probing.
+ * Ces différences se manifestent tant au niveau du temps moyen d'exécution que du nombre de collisions.
+ *
+ *  Temps moyen d'exécution :
+ *      Les mesures montrent que la table de hachage Robin Hood présente un temps moyen d'exécution
+ *      de 161005470 nanosecondes, alors que la table de hachage Quadratic Probing
+ *      affiche un temps moyen d'exécution de 155111170 nanosecondes.
+ *      Le Quadratic Probing semble légèrement plus rapide que le Robin Hood HashTable.
+ *
+ *      La table de hachage Robin Hood présente une variabilité plus importante
+ *      dans ses temps d'exécution. Elle peut parfois surpasser la table de hachage Quadratic Probing,
+ *      mais dans d'autres cas, elle peut être significativement plus lente.
+ *      Cette variabilité peut être un désavantage si une exécution rapide et prévisible est essentielle.
+ *
+ *  Nombre de collisions :
+ *     Le Robin Hood HashTable présente un total de 856076 collisions et
+ *     le Quadratic Probing HashTable en compte 801 022.
+ *     Le Robin Hood HashTable affiche un nombre de collisions supérieur, mais ce nombre élevé
+ *     de collisions semble s'accompagner d'une meilleure efficacité dans des situations idéales.
+ *
+ *  Avantages et désavantages :
+ *
+ *      Avantages du Robin Hood HashTable :
+ *          Peut être plus rapide que le Quadratic Probing HashTable dans des conditions idéales
+ *
+ *     Désavantages du Robin Hood HashTable :
+ *         La variabilité des performances peut poser des problèmes si l'on nécessite une latence prévisible.
+ *         Le nombre élevé de collisions peut être un désavantage dans certaines situations.
+ *
+ *     Avantages du Quadratic Probing HashTable :
+ *         Offre une exécution plus prévisible et des performances stables dans diverses situations.
+ *         Le nombre de collisions est plus faible peut être un avantage dans des situations sensibles à la latence.
+ *
+ *     Désavantages du Quadratic Probing HashTable :
+ *         Peut être légèrement plus lent que le Robin Hood HashTable dans des conditions idéales.
+ *
+ * Le choix entre le Robin Hood HashTable et le Quadratic Probing HashTable
+ * dépend des besoins spécifiques de l'application. Le Robin Hood HashTable peut exceller dans
+ * des conditions idéales avec une faible charge, alors que le Quadratic Probing HashTable offre
+ * une performance plus stable et prévisible, ce qui peut être essentiel dans des environnements
+ * critiques en termes de temps d'exécution.
+ *
  * */
