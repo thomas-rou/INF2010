@@ -1,5 +1,9 @@
 public class RobinHoodHashTable<AnyType> extends QuadraticProbingHashTable<AnyType> {
     //int collisionNbr = 0;
+    int initialPos;
+    int currentProbeDistance;
+    int offset;
+
     public RobinHoodHashTable(){
         super();
     }
@@ -13,39 +17,39 @@ public class RobinHoodHashTable<AnyType> extends QuadraticProbingHashTable<AnyTy
      return -1;
     }*/
 
+    private void initializeEntry (HashEntry<AnyType> x){
+        initialPos = myhash(x.element);
+        currentProbeDistance = x.probeDistance;
+        offset = 1;
+    }
+
+    private void placeEntry (HashEntry<AnyType> x, int position) {
+        array[position] = new HashEntry<AnyType>(x.element, true);
+        array[position].probeDistance = currentProbeDistance;
+
+        if (++currentSize > array.length * 0.5) {
+            rehash();
+        }
+    }
+
     private void insert (HashEntry<AnyType> x) {
-        int initialPos = myhash(x.element);
+        initializeEntry(x);
         int currentPos = initialPos;
-        int currentProbeDistance = x.probeDistance;
-        int baseOffset = 1;
-        int offset = baseOffset;
 
         while (true) {
             if (array[currentPos] == null) {
-                array[currentPos] = new HashEntry<AnyType>(x.element, true);
-                array[currentPos].probeDistance = currentProbeDistance;
-
-                if (++currentSize > array.length * 0.5) {
-                    rehash();
-                    return;
-                }
+                placeEntry(x,currentPos);
+                return;
             } else if (array[currentPos].element == x.element) {
                 return;
             } else if (currentProbeDistance > array[currentPos].probeDistance) {
                 HashEntry<AnyType> temp = array[currentPos];
-                array[currentPos] = new HashEntry<AnyType>(x.element, true);
-                array[currentPos].probeDistance = currentProbeDistance;
+                placeEntry(x,currentPos);
                 //++collisionNbr;
-
-                if (++currentSize > array.length * 0.5) {
-                    rehash();
-                }
 
                 if (temp.isActive) {
                     x = temp;
-                    offset = baseOffset;
-                    currentProbeDistance = x.probeDistance;
-                    initialPos = myhash(x.element);
+                    initializeEntry(x);
                 } else {
                     --currentSize;
                     return;
