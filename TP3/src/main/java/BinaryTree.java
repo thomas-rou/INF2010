@@ -14,6 +14,10 @@ public class BinaryTree<T> {
      */
     private void printPostOrder(BinaryNode<T> node) {
         // TODO
+        if(node == null) return;
+        this.printPostOrder(node.left);
+        this.printPostOrder(node.right);
+        System.out.printf("%d ",node.getValue());
     }
 
     /**
@@ -29,6 +33,10 @@ public class BinaryTree<T> {
      */
     private void printPreOrder(BinaryNode<T> node) {
         // TODO
+        if(node == null) return;
+        System.out.printf("%d ",node.getValue());
+        this.printPreOrder(node.left);
+        this.printPreOrder(node.right);
     }
 
     /**
@@ -44,6 +52,10 @@ public class BinaryTree<T> {
      */
     private void printInOrder(BinaryNode<T> node) {
         // TODO
+        if(node == null) return;
+        printInOrder(node.left);
+        System.out.printf("%d ",node.getValue());
+        printInOrder(node.right);
     }
 }
 

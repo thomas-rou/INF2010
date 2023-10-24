@@ -11,7 +11,10 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T>{
 
     protected BinaryNode<T> add(T value, BinaryNode<T> curNode) {
         // TODO
-        return null;
+        curNode = super.add(value,curNode);
+        if (curNode==null) return null ;
+        updateHeight(curNode);
+        return balance(curNode);
     }
 
     /**
@@ -25,7 +28,10 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T>{
 
     protected BinaryNode<T> remove(T value, BinaryNode<T> curNode) {
         // TODO
-        return null;
+        curNode = super.remove(value, curNode);
+        if (curNode==null) return null ;
+        updateHeight(curNode);
+        return balance(curNode);
     }
 
     /**
@@ -35,7 +41,19 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T>{
      */
     protected BinaryNode<T> balance(BinaryNode<T> curNode) {
         // TODO
-        return null;
+        if (curNode == null) return null;
+
+        if (getHeight(curNode.left) - getHeight(curNode.right) > 1) {
+            if (getHeight(curNode.left.left) < getHeight(curNode.left.right))
+                curNode.left = rotateLeft(curNode.left);
+            return rotateRight(curNode);
+        } else if (balanceFactor(curNode) > 1) {
+            if (balanceFactor(curNode.right) < 0)
+                curNode.right = rotateRight(curNode.right);
+            return rotateLeft(curNode);
+        }
+        updateHeight(curNode);
+        return curNode;
     }
 
 
@@ -46,7 +64,12 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T>{
      */
     protected BinaryNode<T> rotateRight(BinaryNode<T> curNode) {
         // TODO
-        return null;
+        BinaryNode<T> curLeftTemp = curNode.left;
+        curNode.left = curLeftTemp.right;
+        curLeftTemp.right = curNode;
+        updateHeight(curNode);
+        updateHeight(curLeftTemp);
+        return curLeftTemp;
     }
 
     /**
@@ -56,7 +79,12 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T>{
      */
     protected BinaryNode<T> rotateLeft(BinaryNode<T> curNode){
         // TODO
-        return null;
+        BinaryNode<T> curRightTemp = curNode.right;
+        curNode.right = curRightTemp.left;
+        curRightTemp.left = curNode;
+        updateHeight(curNode);
+        updateHeight(curRightTemp);
+        return curRightTemp;
     }
 
     /**
