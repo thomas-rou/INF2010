@@ -2,7 +2,6 @@ public class Interview {
 
     /** Expliquez votre complexité temporelle et spatiale en cas moyen et en pire cas à l'aide de commentaire dans le code
      *  Indiquez les équivalences telles que O(n + 1) => O(n) et O(2n) => O(n)
-     *
      ** TODO Time Complexity : Worst Case O(n), explain Worst and Average Case
      *Dans cette fonction, il est visible que la complexité temporelle dans le pire des cas est de
      *O(n). Cette conclusion est tirée du fait qu'il y a une boucle "for" contenant plusieurs
@@ -52,7 +51,6 @@ public class Interview {
 
     /** Expliquez votre complexité temporelle et spatiale à l'aide de commentaire dans le code
      *  Indiquez les équivalences telles que O(n + 1) => O(n) et O(2n) => O(n)
-     *
      ** TODO Time Complexity : Worst Case O(log(n)), explain Worst and Average Case
      *Dans cette fonction, il n'est pas aisé de déterminer directement la complexité temporelle du pire cas.
      *Cependant, en s'appuyant sur nos connaissances de certaines fonctions et de l'informatique binaire,
@@ -66,7 +64,6 @@ public class Interview {
      *boucle : O(log(n) * 1 * 1(1+1) * 1(1+1)) ce qui donne O(log(n)*4), soit finalement O(log(n)). Dans le meilleur
      *des cas, nous obtenons O(1) grâce à la première condition "if". Toutefois, cette situation est moins
      *courante, donc en moyenne, la complexité temporelle reste O(log(n)).
-     *
 
      ** TODO Space Complexity : Determine and Explain Worst and Average Case in comments
      *Pour définir la complexité spatiale de cet algorithme, il est nécessaire d'analyser l'espace occupé
@@ -79,8 +76,6 @@ public class Interview {
      *si le tableau ne contient qu'un seul élément, la complexité spatiale est O(1) car nous n'aurons pas à effectuer
      *l'itération log(n) fois, grâce à notre condition "if". Néanmoins, en moyenne, la complexité sera plutôt de O(log(n)),
      * car le tableau contiendra généralement plus d'un élément.
-     *
-     *
      ** TODO HAS TO BE ITERATIVE, NOT RECURSIVE
      * @param numbers List of numbers sorted in ascending order containing 1 duplicate
      * @return non-duplicate number
@@ -92,7 +87,6 @@ public class Interview {
 
         int left = 0;
         int right = numbers.length - 1;
-
         while (left < right) {
             int mid = left + (right - left) / 2;
 
@@ -120,9 +114,23 @@ public class Interview {
 
     /** Expliquez votre complexité temporelle et spatiale à l'aide de commentaire dans le code
      *  Indiquez les équivalences telles que O(n + 1) => O(n) et O(2n) => O(n)
-     *
      ** TODO Time Complexity : Worst Case O(log(n)), explain Worst and Average Case
+     * Même si cet algorithme est récursif, son essence reste simple. Il applique le principe de "diviser pour régner".
+     * Concrètement, nous divisons notre tableau en deux à chaque itération. Ainsi, même dans le pire scénario,
+     * nous examinons seulement la moitié de ce tableau à chaque étape. En divisant continuellement par deux,
+     * nous aboutissons à une complexité temporelle de O(log(n)) tant pour le cas moyen que pour le pire cas.
+     * Bien sûr, dans le meilleur des cas où nous trouvons l'élément unique dès la première itération, la complexité serait O(1).
+     * Toutefois, un tel scénario est exceptionnel. En général, nous pouvons nous attendre à une complexité de O(log(n)).
+     * Calculs: O(log(n)*1*1*(O(log(n)*1*1...)) => O(log(n))
+
      ** TODO Space Complexity : Determine and Explain Worst and Average Case in comments
+     * La complexité spatiale est principalement dictée par l'entrée de la fonction. Toutefois,
+     * contrairement à la complexité temporelle, la récursion n'utilise pas un espace constant. A chaque
+     * étape de la récursion, nous allouons de l'espace sur la pile d'exécution.
+     * Étant donné que nous divisons notre tableau en deux à chaque itération, et que chaque
+     * division génère un nouvel appel récursif, nous avons une complexité spatiale de O(log(n))
+     * à la fois pour le cas moyen et le pire cas.
+
      ** TODO HAS TO BE RECURSIVE, NOT ITERATIVE
      * @param numbers List of numbers sorted in ascending order containing 1 non-duplicate
      * @return non-duplicate number
