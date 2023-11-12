@@ -43,46 +43,71 @@ public class Interview {
         return isHeap(node.left, node.getValue(), isMaxHeap) && isHeap(node.right, node.getValue(), isMaxHeap);
 
     }
+    /*
+    - 'part1Interview' détermine le type de heap en vérifiant les propriétés de MaxHeap et MinHeap sur
+    l'arbre binaire. Elle parcourt chaque nœud une fois, d'où sa complexité temporelle en O(N).
 
-    public List<Integer> part2Interview(Integer[] arr, Integer k)
-    {
-        // TODO
-        //Complexité Temporelle Globale: O(M log M), où M est le nombre d'éléments uniques dans arr.
-        //Complexité Spatiale Globale: O(M).
-        //
-        //
-        // Création de la Map des fréquences
-        // Complexité Temporelle: O(N) - parcours de chaque élément une fois
-        // Complexité Spatiale: O(M) - stockage des éléments uniques et leurs fréquences
+    - 'isHeap' est une fonction récursive qui vérifie si un sous-arbre est un MaxHeap ou un MinHeap.
+    Elle a également une complexité temporelle en O(N) car chaque nœud est visité une fois.
+    Sa complexité spatiale est O(h) due aux appels récursifs, où h est la hauteur de l'arbre.
+     */
+
+
+
+
+
+
+    public Integer part2Interview(Integer[] arr, Integer k) {
+        // Compter les fréquences de chaque nombre
+        // Complexité Temporelle: O(N) - Parcourir une fois tous les éléments
+        // Complexité Spatiale: O(N) - Stockage des fréquences pour chaque élément unique
         Map<Integer, Integer> frequencyMap = new HashMap<>();
         for (Integer num : arr) {
             frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
         }
 
-        // Conversion de la Map en List pour le tri
-        // Complexité Temporelle: O(M) - création de la liste à partir des clés
-        // Complexité Spatiale: O(M) - stockage des clés uniques dans la liste
-        List<Integer> sortedList = new ArrayList<>(frequencyMap.keySet());
+        // PriorityQueue pour maintenir les K éléments les plus fréquents
+        // Complexité Temporelle: O(N log K) - Insertion/Suppression dans la PriorityQueue
+        // Complexité Spatiale: O(K) - La PriorityQueue contient jusqu'à K éléments
+        PriorityQueue<Integer> heap = new PriorityQueue<>(
+                (a, b) -> {
+                    int freqCompare = Integer.compare(frequencyMap.get(a), frequencyMap.get(b));
+                    if (freqCompare != 0) {
+                        return freqCompare;
+                    }
+                    return a.compareTo(b);
+                }
+        );
 
-        // Tri de la liste
-        // Complexité Temporelle: O(M log M) - tri log-linéaire des éléments uniques
-        // Complexité Spatiale: O(1) - tri sur place (dépend de l'implémentation du tri)
-        sortedList.sort((a, b) -> {
-            int freqCompare = Integer.compare(frequencyMap.get(b), frequencyMap.get(a));
-            if (freqCompare != 0) {
-                return freqCompare;
+        // Ajouter tous les éléments à la PriorityQueue et maintenir sa taille à K
+        for (Integer num : frequencyMap.keySet()) {
+            heap.add(num);
+            if (heap.size() > k) {
+                heap.poll();
             }
-            return a.compareTo(b);
-        });
-
-        // Récupération du k-ième élément
-        // Complexité Temporelle: O(1) - accès direct à un élément dans la liste
-        // Complexité Spatiale: O(1)
-        if (k > 0 && k <= sortedList.size()) {
-            return sortedList.get(k - 1);
-        } else {
-            return null; // Gestion des valeurs de k hors limites
         }
+
+        // Extraire les éléments et les stocker dans une liste pour l'inverser
+        // Complexité Temporelle: O(K log K) - Extraire K éléments de la PriorityQueue
+        // Complexité Spatiale: O(K) - Stockage des K éléments dans une liste
+        List<Integer> topKElements = new ArrayList<>();
+        while (!heap.isEmpty()) {
+            topKElements.add(heap.poll());
+        }
+        Collections.reverse(topKElements);
+
+        // Retourner le k-ième élément
+        // Complexité Temporelle: O(1)
+        // Complexité Spatiale: O(1)
+        return k <= topKElements.size() ? topKElements.get(k - 1) : null;
     }
 
+
+    /*
+    La partie qui prend le plus de temps est la construction et la manipulation de la
+    PriorityQueue qui a une complexité temporelle de O(N log K) pour insérer N éléments
+    en une taille max de K. La complexité spatiale, c'est surtout le stockage des
+    fréquences et des éléments dans la PriorityQueue et la liste finale. Tout cela conduit donc
+    à une complexité spatiale globale de O(N + K).
+     */
 }
