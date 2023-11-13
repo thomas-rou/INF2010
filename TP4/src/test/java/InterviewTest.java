@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class InterviewTest {
-    private Interview solution;
+    private Interview solution = new Interview();
     private BinarySearchTree<Integer> tree;
     // Partie 3.1
 
