@@ -6,10 +6,10 @@ import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import Maze.DFSMaze;
+import Maze.BFSMaze;
 import Maze.Tile;
 
-public class DFSMazeTest {
+public class BFSMazeTest {
     private ArrayList<ArrayList<Tile>> readInput(String problemNumber) throws FileNotFoundException {
         Scanner scanner = new Scanner(new File("src/test/resources/Maze/inputs/input" + problemNumber + ".csv"));
 
@@ -32,27 +32,27 @@ public class DFSMazeTest {
 
     @Test
     void inputsValidity() {
-        assertNull(DFSMaze.findPath(new ArrayList<>()));
+        assertNull(BFSMaze.findPath(new ArrayList<>()));
 
         ArrayList<ArrayList<Tile>> noEntranceMaze = new ArrayList<>(List.of(
                 new ArrayList<>(List.of(Tile.Wall, Tile.Wall, Tile.Wall)),
                 new ArrayList<>(List.of(Tile.Wall, Tile.Wall, Tile.Wall)),
                 new ArrayList<>(List.of(Tile.Wall, Tile.Wall, Tile.Wall))
         ));
-        assertNull(DFSMaze.findPath(noEntranceMaze));
+        assertNull(BFSMaze.findPath(noEntranceMaze));
 
         ArrayList<ArrayList<Tile>> noExitMaze = new ArrayList<>(List.of(
                 new ArrayList<>(List.of(Tile.Wall, Tile.Wall, Tile.Wall)),
                 new ArrayList<>(List.of(Tile.Floor, Tile.Floor, Tile.Wall)),
                 new ArrayList<>(List.of(Tile.Wall, Tile.Wall, Tile.Wall))
         ));
-        assertNull(DFSMaze.findPath(noExitMaze));
+        assertNull(BFSMaze.findPath(noExitMaze));
     }
 
     @Test
     void input00() throws FileNotFoundException {
         ArrayList<ArrayList<Tile>> maze = readInput("00");
-        Integer shortestPathDistance = DFSMaze.findPath(maze);
+        Integer shortestPathDistance = BFSMaze.findPath(maze);
 
         assertNotNull(shortestPathDistance);
         assertEquals(91, shortestPathDistance);
@@ -61,7 +61,7 @@ public class DFSMazeTest {
     @Test
     void input01() throws FileNotFoundException {
         ArrayList<ArrayList<Tile>> maze = readInput("01");
-        Integer shortestPathDistance = DFSMaze.findPath(maze);
+        Integer shortestPathDistance = BFSMaze.findPath(maze);
 
         assertNotNull(shortestPathDistance);
         assertEquals(56, shortestPathDistance);
@@ -70,7 +70,7 @@ public class DFSMazeTest {
     @Test
     void input02() throws FileNotFoundException {
         ArrayList<ArrayList<Tile>> maze = readInput("02");
-        Integer shortestPathDistance = DFSMaze.findPath(maze);
+        Integer shortestPathDistance = BFSMaze.findPath(maze);
 
         assertNotNull(shortestPathDistance);
         assertEquals(96, shortestPathDistance);
@@ -79,7 +79,7 @@ public class DFSMazeTest {
     @Test
     void input03() throws FileNotFoundException {
         ArrayList<ArrayList<Tile>> maze = readInput("03");
-        Integer shortestPathDistance = DFSMaze.findPath(maze);
+        Integer shortestPathDistance = BFSMaze.findPath(maze);
 
         assertNotNull(shortestPathDistance);
         assertEquals(107, shortestPathDistance);
@@ -88,7 +88,7 @@ public class DFSMazeTest {
     @Test
     void input04() throws FileNotFoundException {
         ArrayList<ArrayList<Tile>> maze = readInput("04");
-        Integer shortestPathDistance = DFSMaze.findPath(maze);
+        Integer shortestPathDistance = BFSMaze.findPath(maze);
 
         assertNotNull(shortestPathDistance);
         assertEquals(134, shortestPathDistance);
@@ -97,7 +97,7 @@ public class DFSMazeTest {
     @Test
     void input05() throws FileNotFoundException {
         ArrayList<ArrayList<Tile>> maze = readInput("05");
-        Integer shortestPathDistance = DFSMaze.findPath(maze);
+        Integer shortestPathDistance = BFSMaze.findPath(maze);
 
         assertNotNull(shortestPathDistance);
         assertEquals(142, shortestPathDistance);
@@ -106,7 +106,7 @@ public class DFSMazeTest {
     @Test
     void input06() throws FileNotFoundException {
         ArrayList<ArrayList<Tile>> maze = readInput("06");
-        Integer shortestPathDistance = DFSMaze.findPath(maze);
+        Integer shortestPathDistance = BFSMaze.findPath(maze);
 
         assertNotNull(shortestPathDistance);
         assertEquals(172, shortestPathDistance);
@@ -115,7 +115,7 @@ public class DFSMazeTest {
     @Test
     void input07() throws FileNotFoundException {
         ArrayList<ArrayList<Tile>> maze = readInput("07");
-        Integer shortestPathDistance = DFSMaze.findPath(maze);
+        Integer shortestPathDistance = BFSMaze.findPath(maze);
 
         assertNotNull(shortestPathDistance);
         assertEquals(254, shortestPathDistance);
@@ -124,7 +124,7 @@ public class DFSMazeTest {
     @Test
     void input08() throws FileNotFoundException {
         ArrayList<ArrayList<Tile>> maze = readInput("08");
-        Integer shortestPathDistance = DFSMaze.findPath(maze);
+        Integer shortestPathDistance = BFSMaze.findPath(maze);
 
         assertNotNull(shortestPathDistance);
         assertEquals(646, shortestPathDistance);
@@ -133,7 +133,7 @@ public class DFSMazeTest {
     @Test
     void input09() throws FileNotFoundException {
         ArrayList<ArrayList<Tile>> maze = readInput("09");
-        Integer shortestPathDistance = DFSMaze.findPath(maze);
+        Integer shortestPathDistance = BFSMaze.findPath(maze);
 
         assertNotNull(shortestPathDistance);
         assertEquals(684, shortestPathDistance);
