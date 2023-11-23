@@ -8,14 +8,22 @@ import java.util.stream.Collectors;
  ** Implement DFS algorithm to solve the maze.
  */
 public class DFSMaze {
+
+    private static void printCounterValues(Counter counter) {
+        System.out.println("Total Nodes Traversed: " + counter.totalNodesTraversed);
+        //System.out.println("Nodes in Stack: " + counter.stackedNodes);
+        System.out.println("Max Stack Size: " + counter.maxStackSize);
+    }
+
     /** TODO
      * Returns the distance of the path within the maze
      * @param maze 2D table representing the maze
      * @return Distance of the path within the maze, null if not solvable
      */
     public static Integer findPath(ArrayList<ArrayList<Tile>> maze) {
+        Counter counter = new Counter();
         // Check if input is valid
-        printMaze(maze);
+        //printMaze(maze);
         if (maze.size() == 0)
             return null;
 
@@ -38,6 +46,11 @@ public class DFSMaze {
 
         // Loop until the stack is empty, and we found our result
         while (!stack.isEmpty()) {
+            counter.stackedNodes = stack.size(); // Update the number of nodes in the stack
+            System.out.println("Nodes in Stack current iteration: " + counter.stackedNodes);
+            counter.maxStackSize = Math.max(counter.maxStackSize, counter.stackedNodes); // Update max stack size
+            counter.totalNodesTraversed++; // Increment the number of traversed nodes
+
             Node node = stack.pop();
             i = node.i;
             int j = node.j;
@@ -49,6 +62,7 @@ public class DFSMaze {
                     stack.push(new Node(i + k, j, dist + 1));
 
                     if (maze.get(i + k).get(j) == Tile.Exit) {
+                        printCounterValues(counter);
                         return dist + 1;
                     }
                 }
@@ -58,11 +72,14 @@ public class DFSMaze {
                     stack.push(new Node(i, j + k, dist + 1));
 
                     if (maze.get(i).get(j + k) == Tile.Exit) {
+                        printCounterValues(counter);
                         return dist + 1;
                     }
                 }
             }
         }
+
+        printCounterValues(counter);
         return null;
     }
 
