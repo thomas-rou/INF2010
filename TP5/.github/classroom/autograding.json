@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "All Tests",
+      "setup": "chmod +x ./gradlew",
+      "run": "./gradlew test",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": null
+    }
+  ]
+}
